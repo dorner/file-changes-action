@@ -69,9 +69,12 @@ export function getFormatExt(format: string): string {
  * @returns string for output of changedFiles
  */
 export function formatChangedFiles(format: string, files: string[]): string {
+  console.log(`Format is:${format}`);
   if (format === 'json') {
     return JSON.stringify(files)
   }
+  console.log(`Output format is:${format}: and files are ${files}`);
+  console.log(`Joined files:${files.join(format)}`)
   return files.join(format)
 }
 
