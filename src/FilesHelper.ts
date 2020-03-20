@@ -1,4 +1,4 @@
-import {setOutput as coreSetOutput, debug as coreDebug} from '@actions/core'
+import {setOutput as coreSetOutput, debug as coreDebug, info as coreInfo } from '@actions/core'
 import {writeFileSync} from 'fs'
 import {ChangedFiles} from 'typings/ChangedFiles'
 import {GitHubFile} from 'typings/GitHubFile'
@@ -69,12 +69,12 @@ export function getFormatExt(format: string): string {
  * @returns string for output of changedFiles
  */
 export function formatChangedFiles(format: string, files: string[]): string {
-  console.log(`Format is:${format}`);
+  coreInfo(`Format is:${format}`);
   if (format === 'json') {
     return JSON.stringify(files)
   }
-  console.log(`Output format is:${format}: and files are ${files}`);
-  console.log(`Joined files:${files.join(format)}`)
+  coreInfo(`Output format is:${format}: and files are ${files}`);
+  coreInfo(`Joined files:${files.join(format)}`)
   return files.join(format)
 }
 
