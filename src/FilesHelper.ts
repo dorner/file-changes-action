@@ -69,12 +69,12 @@ export function getFormatExt(format: string): string {
  * @returns string for output of changedFiles
  */
 export function formatChangedFiles(format: string, files: string[]): string {
-  coreInfo(`Format is:${format}`);
+  coreDebug(`Format is:${format}`);
   if (format === 'json') {
     return JSON.stringify(files)
   }
-  coreInfo(`Output format is:${format}: and files are ${files}`);
-  coreInfo(`Joined files:${files.join(format)}`)
+  coreDebug(`Output format is:${format}: and files are ${files}`);
+  coreDebug(`Joined files:${files.join(format)}`)
   return files.join(format)
 }
 
@@ -87,6 +87,7 @@ export function formatChangedFiles(format: string, files: string[]): string {
  */
 export function writeFiles(format: string, key: string, files: string[]): void {
   try {
+    coreDebug(`WriteFiles, format is:${format}:`);
     const ext = getFormatExt(format)
     const fileName = key === 'files' ? `${key}${ext}` : `files_${key}${ext}`
     coreDebug(
