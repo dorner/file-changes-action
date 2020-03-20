@@ -22,6 +22,7 @@ export function getInputs(): Inputs {
           'Received no token, a token is a requirement.'
         )
       )
+    coreWarning(`getInputs(): output is:${coreGetInput('output')}:`);
     return {
       githubRepo:
         coreGetInput('githubRepo') ||
